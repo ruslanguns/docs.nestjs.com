@@ -1,6 +1,6 @@
 ### Custom providers
 
-In earlier chapters, we touched on various aspects of **Dependency Injection (DI)** and how it is used in Nest. One example of this is the [constructor based](https://docs.nestjs.com/providers#dependency-injection) dependency injection used to inject instances (often service providers) into classes. You won't be surprised to learn that Dependency Injection is built in to the Nest core in a fundamental way. So far, we've only explored one main pattern. As your application grows more complex, you may need to take advantage of the full features of the DI system, so let's explore them in more detail.
+In earlier chapters, we touched on various aspects of **Dependency Injection (DI)** and how it is used in Nest. One example of this is the [constructor based](https://docs.nestjs.com/providers#dependency-injection) dependency injection used to inject instances (often service providers) into classes. You won't be surprised to learn that Dependency Injection is built into the Nest core in a fundamental way. So far, we've only explored one main pattern. As your application grows more complex, you may need to take advantage of the full features of the DI system, so let's explore them in more detail.
 
 #### DI fundamentals
 
@@ -89,7 +89,6 @@ export class AppModule {}
 What exactly is happening under the covers to make this work? There are three key steps in the process:
 
 1. In `cats.service.ts`, the `@Injectable()` decorator declares the `CatsService` class as a class that can be managed by the Nest IoC container.
-
 2. In `cats.controller.ts`, `CatsController` declares a dependency on the `CatsService` token with constructor injection:
 
 ```typescript
@@ -138,6 +137,8 @@ What happens when your requirements go beyond those offered by _Standard provide
 
 Nest allows you to define Custom providers to handle these cases. It provides several ways to define custom providers. Let's walk through them.
 
+> info **Hint** If you are having problems with dependency resolution you can set the `NEST_DEBUG` environment variable and get extra dependency resolution logs during startup.
+
 #### Value providers: `useValue`
 
 The `useValue` syntax is useful for injecting a constant value, putting an external library into the Nest container, or replacing a real implementation with a mock object. Let's say you'd like to force Nest to use a mock `CatsService` for testing purposes.
@@ -185,7 +186,7 @@ export class AppModule {}
 
 In this example, we are associating a string-valued token (`'CONNECTION'`) with a pre-existing `connection` object we've imported from an external file.
 
-> warning **Notice** In addition to using strings as token values, you can also use JavaScript [symbols](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol).
+> warning **Notice** In addition to using strings as token values, you can also use JavaScript [symbols](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol) or TypeScript [enums](https://www.typescriptlang.org/docs/handbook/enums.html).
 
 We've previously seen how to inject a provider using the standard [constructor based injection](https://docs.nestjs.com/providers#dependency-injection) pattern. This pattern **requires** that the dependency be declared with a class name. The `'CONNECTION'` custom provider uses a string-valued token. Let's see how to inject such a provider. To do so, we use the `@Inject()` decorator. This decorator takes a single argument - the token.
 

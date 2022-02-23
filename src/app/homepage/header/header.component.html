@@ -1,5 +1,5 @@
 <header>
-  <div
+  <button
     class="icon-wrapper"
     (click)="toggle.emit()"
     [class.opened]="isSidebarOpened"
@@ -38,7 +38,7 @@
         />
       </svg>
     </div>
-  </div>
+  </button>
   <ng-content></ng-content>
   <app-social-wrapper></app-social-wrapper>
   <div class="menu-wrapper">
@@ -53,14 +53,6 @@
           target="_blank"
           title="NestJS - A node.js framework built on top of TypeScript"
           >Our website</a
-        >
-      </li>
-      <li class="shop-link">
-        <a
-          href="https://nestjs.threadless.com/"
-          target="_blank"
-          title="Shop | NestJS - A node.js framework built on top of TypeScript"
-          >Shop</a
         >
       </li>
       <li>

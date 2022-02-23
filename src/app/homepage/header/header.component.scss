@@ -30,6 +30,8 @@ header {
   display: inline-block;
   position: relative;
   z-index: 10000;
+  border: none;
+  background: transparent;
 
   &:hover {
     cursor: pointer;
@@ -103,7 +105,7 @@ header {
     li:first-of-type {
       display: none;
     }
-    
+
     .search-wrapper {
       margin-right: 0;
     }
@@ -339,6 +341,7 @@ header {
   padding: 5px 20px 5px 28px;
   color: #fff;
   font-family: 'Source Sans Pro', 'Helvetica Neue', sans-serif;
+  font-display: swap;
   font-size: 14px;
   outline: 0 !important;
   transition: all 90ms ease-in-out;
